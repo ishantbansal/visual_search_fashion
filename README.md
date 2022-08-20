@@ -22,3 +22,10 @@ give your image path in "--input_image" and model path in "--model"
 ```
 python3 get_similar_images.py --input_image ../visualsimilarity/bottoms_resized_png/35468915NIR.png --model models/resnet50.pth
 ```     
+
+#### Possible Improvements -
+- Currently model used for feature extraction is pretrained ResNet50 , performance can be improved by using custom model trained on fashion images. We can use DeepFashion dataset to train our model.
+- Code structure can be improved to make it more readable and customizable.
+- Speed can be improved by moving all CPU ops to GPU ops.
+- Alternate methods can be tested for finding similarity score.
+
