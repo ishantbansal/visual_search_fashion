@@ -18,6 +18,7 @@ args = parser.parse_args()
 
 GPU_ID = 0
 CROP_SIZE = 480
+num_similar_images = 10
 
 DISTANCE_METRIC = ('cosine', 'cosine')
 COLOR_WEIGHT = 0.1
@@ -100,10 +101,11 @@ def load_feat_db():
 
 deep_feats, color_feats , labels = load_feat_db()
 f = get_features(input_image)
-result = naive_query(f, deep_feats, color_feats, labels, 10)
+result = naive_query(f, deep_feats, color_feats, labels, num_similar_images+1)
 
 def visualize(original, result, cols=1):
     
+    result = result[1:]
     n_images = len(result) + 1
     titles = ["Original"] + ["Score: {:.4f}".format(v) for k, v in result]
     images = [original] + [k for k, v in result]
